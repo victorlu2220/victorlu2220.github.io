@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head><title> P3 Description</title>
+    <link rel="stylesheet" href="C_P3_stylesheet.css">
+</head>
+
+<body>
+    <h1 align="center"> Artificial Bone with a Monitored Bioreactor for Testing </h1>
+    <br>
+        <h2 align="center">Abstract: </h2>
+        <div class="pDiv"> &nbsp &nbsp &nbsp Unicameral Bone Cysts(UBCs) are found primarily in children and cause severe pain if left untreated. 
+            During treatment, surgeons extract fluid from the cysts and fill the void with bone-graft biomaterial. 
+            This surgical treatment can be expensive and requires a longer recovery period. In order to minimize cost
+             and recovery time, a minimally invasive treatment procedure is ideal. The goal of this project is to create 
+             a bone-graft biomaterial that is easily injected into the USB that can still mimic the mechanical properties of 
+             natural bone. To test this biomaterial, a bioreactor will also be fabricated to test the samples in an environment 
+             that mimics the in vivo conditions in the body. The final injectable biomaterial will help make UBS treatment more accessible to patients by providing a minimally invasive 
+             treatment that lowers cost and recovery time. <br><br><br>
+        </div>
+        <hr> 
+
+
+        <h2 align="center">3D Models: </h2>
+        <div class="pDiv1" align="center">
+            <img src="C_P3_1.png" height="500px" width="500px" id="model">
+            <br><br>
+            <div class="cDiv1"><b>Figure I: Sample Holder I. </b> This design is intended to be sank to the bottom of 
+            bioreactor and bone graft samples are held within extrusions. </div> <br> <br><br>
+        </div>
+
+        <div class="pDiv1"  align="center">
+            <img src="C_P3_2.png" height="500px" width="500px" id="model">
+            <br><br>
+            <div class="cDiv1"><b>Figure II: Sample Holder II. </b> This design designed to be held within the bioreactor by
+            side-supports. Three noncircular intrusions have been made to place magnets to create attractive force with magnets 
+            on the outer surface of the bioreactor. Bone graft samples are placed in the circular holes.  </div><br> <br><br>
+        </div>
+
+        <div class="pDiv1"  align="center">
+            <img src="C_P3_3.png" height="500px" width="500px" id="model">
+            <br><br>
+            <div class="cDiv1"><b>Figure III: Sample Holder III. </b> This design is suspended from the lid of the bioreactor by 3 
+                thread bars. The holder can be taken out safely and easily by taking off the lid. Bone graft samples are held 
+                within the circular intrusions.  
+            </div><br> <br><br>
+        </div>
+
+        <div class="pDiv1"  align="center">
+            <img src="C_P3_4.png" height="500px" width="500px" id="model">
+            <br><br>
+            <div class="cDiv1"><b>Figure IV: Sample Holder IV. </b> This design is a simpler version of III given the situation that 
+            the bioreactor was only allowed to be created using lathes and mills. </div><br> <br><br>
+        </div>
+        <br>
+        <hr>
+
+        <h2 align="center">Software: </h2>
+        <div> 
+            <p class="words"> &nbsp &nbsp &nbsp An Arduino code has been written to create a <b>temperature-sensitive</b> circuit. 
+                <b>Voltage</b> is measured from the thermistor, then <b>resistance</b> was calculated and was converted to 
+                <b>temperature</b> based on the resistance-temperature relationship calculated from the <u>datasheet</u> of the thermistor. The LED
+                of the circuit is turned <b>on</b> when the temperature reaches <b>35.5</b> degrees Celcius; it then experiences 
+                a buffer temerature range to prevent being turned on and off frequently at the threshold temperature. 
+                The LED won't be turned <b>off</b> till the temperature reaches <b>36.5</b> degrees Celcius. The code is written in a way 
+                that a boolean controls the state of LED, and it will only change if the temperature reaches 35.5 and then 36.5(the order does not matter)
+                 degree consecutively. 
+            </p>
+        </div>
+        <div class="pDiv" align="center">
+
+            <div class="pDiv">
+                <img src="C_P3_RT.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure V: Resistance-Temperature Relationship. </b>
+                    <br><br><br>
+                </div>
+            </div>
+
+            <div class="pDiv">
+                <img src="C_P3_Block.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure VI: Block Diagram for Electronics. </b>
+                    <br><br><br>
+                 </div>
+            </div>
+
+            <div class="pDiv">
+                <img src="C_P3_Flowchart.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure VII: Software Flow Diagram. </b> </div>
+                <br><br><br>
+            </div>
+
+            <div class="pDiv">
+                <img src="C_P3_circuit_diagram.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure VIII: Circuit Schematics. </b>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2 align="center">Bone Samples: </h2>
+
+        <div class="words">
+            <p> &nbsp &nbsp &nbsp Six simple bone grafts were fabricated. Their <b>physical properties</b> should be similar to that of
+                native bones. For this experiment, it was decided that, for the sake of being both <b>time and cost</b> 
+                efficiency, the bone samples were made by mixing <b>calcium sulphate and deionized water</b>. Half of the samples 
+                were then placed within the bioreactor for in-vitro testing, the rest were used as a control group. 
+            </p>
+            <div align="center">
+                <img src="C_P3_bone_grafts.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure IX: Bone Graft Samples. </b>
+                    <br><br><br>
+                </div>
+            </div>
+
+        </div>
+
+        <hr>
+        
+        <h2 align="center">Bioreactor: </h2>
+            <p class="words">&nbsp &nbsp &nbsp The Bioreactor has phenol-red in it to display the pH. An opening has
+                been cut on the lid for the thermistor to go in. Bone graft samples were submerged under the liquid.  </p>
+            <div class="pDiv" align="center">
+                <img src="C_P3_Bioreactor_Flow.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure X: Bioreactor System Flow Diagram. </b>
+                    <br><br><br>
+                </div><br><br><br>
+            </div>
+        <hr>
+
+        <h2 align="center">Final Design: </h2>
+            <div class="pDiv" align="center">
+                <img src="C_P3_final_circuit.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure XI: Final Circuit. </b></div>
+            </div><br><br><br>
+
+            <div class="pDiv" align="center">
+                <img src="C_P3_samples.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure XII: Final Bone Samples(experiment). </b></div>
+            </div><br><br><br>
+
+
+            <div class="pDiv" align="center">
+                <img src="C_P3_Bioreactor.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure XIII: Fully Assembled Bioreactor. </b>
+                    <br><br><br>
+                </div><br><br><br>
+            </div>
+            <hr>
+
+
+        <h2 align="center"> Testing:  </h2>
+        <p class="words" > &nbsp &nbsp &nbsp The system was tested for <b>2 weeks</b>. After two weeks, experimental group was taken out. An 
+            <b>MTS machine</b> was used in order to measure the <b>stress-strain</b> relationship of the bone grafts(both control and 
+            experimental groups), so that <b>Young's modulus</b> could be calculated when doing the data analysis.  </p>
+
+        <hr>
+        
+        <h2 align="center"> Results and Data Analysis:  </h2>
+            <p class="words" > &nbsp &nbsp &nbsp pH of the fluid remain unchanged based on the color of phenol-red. 
+                MTS machine recorded the stress and strain value when a compression test was being operated. 
+                The following data analysis are done using MatLab, data was imported from both EEPROM and MTS machine.   </p>
+
+            <div class="pDiv" align="center">
+                <img src="C_P3_Temp.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure XIV: Temperature Display in EEPROM. </b> Data was recorded every 15 seconds for 
+                2 weeks. </div>
+            </div><br><br><br>
+
+            <div class="pDiv" align="center">
+                <img src="C_P3_Tempbox.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure XV: Temperature Display Boxplot. </b></div>
+            </div><br><br><br>
+
+            <div class="pDiv" align="center">
+                <img src="C_P3_Stress_Strain.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure XVI: Stress-Strain Curve. </b> MTS machine recorded both force(F) and change in length(delt(L)). The 
+                    cross sectional area(A) of each sample was measured as well as their original length(L) previous to experiment. Stress 
+                    and strain was then calculated respectively by F/A, delt(L)/L. Only the roughly linear portion of the graph was taken for the 
+                    resulting Young's modulus to be accurate. 
+                </div><br><br><br>
+            </div>
+
+            <div class="pDiv" align="center">
+                <img src="C_P3_YM_box.png" height="500px" width="500px">
+                <br><br>
+                <div class="cDiv1"><b>Figure XVII: Boxplot for Young's Modulus. </b> Young's modulus describes how much a material
+                deforms under pressure. The greater it is, the less deformation there will be under the same stress. </div>
+            </div><br><br><br>
+
+            <h3 align="center"> Some Statistics: </h3>
+            <span id="stats">
+                <li class="words"><span class="name">Mean Young's Modulus</span>: &nbsp experimental group is 303.79 MPa, control group is 184.65 MPa</li><br>
+                <li class="words"> <span class="name">Student t-Test</span>: &nbsp <b>p-value is .32</b>, suggesting there's not sufficient statistical evidence to reject null hypothesis. </li><br>
+                <li class="words"><span class="name">Coefficient of Variance</span>: &nbsp experimental group has a CV of .42, control group has a CV of .36</li><br>
+                
+            </span>
+            
+            <hr>
+
+            <h2 align="center"> Conclusion: </h2>
+            <div id="conclusion">
+                &nbsp&nbsp&nbsp Native bones has a Young's modulus ranges from 10 to 3000 MPa. The average Young's modulus of the 
+                bone grafts created fall well between this range. P-value of the Student t-test suggests that there is not enough information
+                to conclude that there is a statistically significant difference between 2 groups. This is a good sign because a short, 2-week
+                testing shouldn't have led to a significant change in physical properties. However, a good coefficient of variance(CV) is usually below .3, the 
+                CV of both groups are therefore not ideal. This yields the concern of inconsistency across samples. 
+            </div>
+            
+            <hr>
+
+
+            <h2 align="center"> Future Considerations: </h2>
+
+            <div id="future">
+                <li><b>Code: </b><br>
+                    &nbsp &nbsp &nbsp  The code currently records data relatively rapid(15 seconds) with respect to a 2-week testing period. EEPROM only has 
+                    1024 starage places. Therefore, the resulting data set only showcases a snapshot of the variation in temperature and it does not showcase 
+                    a macroscopic version of how the temperature varies. A longer interval could be considered. 
+                </li><br>
+                <li><b>Bioreactor: </b> <br>
+                    &nbsp &nbsp &nbsp In-vivo condition has a mobile fluid system. Thus, a spinning component could be integrated within the bioreactor to stir the 
+                    fluid and mimic such a condition, which will promote the precision of the outcome of the experiment. 
+                </li><br>
+                <li><b>Bone Graft Samples: </b> <br>
+                    &nbsp &nbsp &nbsp Current bone graft samples are simply mechanically comparable to native bones. Its chemical properties are yet to be tested. 
+                    Moreover, they should be advanced to a level that can enable angiogenesis and the growth of osteoblast. The degradation rate should also be measured 
+                    so that it could match with that of the native bones. Chemicals such as hydroxypropyl methyl cellulose, polyethylene glycol and methyl cellulose to improve
+                    the compressive strength and injectabiity.
+                </li><br>
+            </div>
+
+
+</body>
+
+</html>
