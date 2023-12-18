@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head> <title> Fall 2023, Bottino Lab </title>
+    <link rel="stylesheet" href="D_Bottino_Fall23.css">
+</head>
+
+<body>
+<!-- <body style="content: ' ';
+position: relative;
+background-image: url(D_Bottino_background.png); background-size: cover;
+             background-blend-mode: lighten; background-repeat: no-repeat; background-position: 50% 0;"> -->
+    <div id="content">
+
+        <h1 align="center">Fall 2023, Bottino Lab</h1>
+
+        <h2 align = "center"> Abstract </h2>
+
+        <div class="details" style="font-size: 20px;"> 	
+            &nbsp &nbsp &nbsp Currently in the market, multiple technologies exist that help measure the physical properties of 
+            materials. However, these technologies can be either extremely expensive to purchase or too big in scale that makes them 
+            unsuitable for small-scale mechanical tests. The available microscale mechanical testing device could be hard to operate and require special training. 
+            One goal of this project is to create a user-friendly microdevice that can test the physical properties of a small biomaterial while, ideally, sustaining the cell life. 
+            <br>
+            &nbsp &nbsp &nbsp The demand of settings for chemical testing varies from experiment to experiment, and therefore there isn’t a panacea
+            chemical testing device and engineers need to carefully evaluate these demands and create devices that meet them. The second goal of this project is to create microdevices that 
+            meet the specific needs of each experiment to facilitate the research progress. 
+        </div>
+
+        <h2 align = "center"> Accompolishments </h2>
+        <div style="font-size: 20px;"> 	
+            <p>&nbsp &nbsp &nbsp So far, multiple 3D models for chemical testing have been created, a circuit for a mechanical testing microdevice has 
+        been designed and tested and a linear actuator has been modeled.</p>
+            <p>&nbsp &nbsp &nbsp Figure I shows a chamber that is designed for cell-migration study. In the design, there is a vacancy at the bottom 
+        which allows the injection of hydrogel and nutrients that allows the migration and sustain cell viability on 
+        the device. Cells will grow on the meshes. The empty rectangular platforms are designated as observatory platforms 
+        that can fit well under the microscope.</p> <br><br>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_Migration Study.PNG" height="500px" width="500px"><br><br>
+            <b> Figure I: Migration Study 3D Model </b><br><br><br>
+        </div>
+            <p>&nbsp &nbsp &nbsp Figure II, III combined is a device that serves to do chemical testing. The device has 6 chambers, 
+            and they are all interconnected through the meshes on the platform walls(Figure II). The outer walls are designed to be 
+            inlets and outlets and will form a circulating system with the assistance of a pump. In Figure III, 2 long pipes can be 
+            seen at the bottom of the chamber; they are included so that drugs can be delivered to the system so study the dynamics. 
+            Figure IV shows an assembly of these structures, some margins are given to the meshes because after printing with Form 3 
+            multiple times, the printer doesn’t print with good precision for small scale projects. Figure V shows a fluid stimulation 
+            of the system: a turbulent flow system exists on the platform while the drug delivery will be going through a relatively 
+            laminar at the bottom. </p>
+        <br><br>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_6 chamber sample platform.PNG" height="500px" width="500px"><br><br>
+        <b> Figure II: Chemical Dynamic Study Platform    </b><br><br><br></div>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_6 chamber box.PNG" height="500px" width="500px"><br><br>
+        <b> Figure III: Chemical Dynamic Study Base   </b><br><br><br></div>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_6 chamber assembly.PNG" height="500px" width="500px"><br><br>
+        <b> Figure IV: Chemical Dynamic Study Assembly   </b><br><br><br></div>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_Fluid Simulation, Vector View(CFD).png" height="300px" width="500px"><br><br>
+            <b> Figure V: Chemical Dynamic Flow Simulation    </b><br><br><br></div>
+        <p>
+            &nbsp &nbsp &nbsp A device, although discarded due to the sensitivity of cells for the downward flow, has been designed such that it 
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4537716/">theoretically<a> maintains a laminar flow within the system. 
+            The project and the flow stimulation are shown 
+            in Figure VI and Figure VII. 
+        </p><br><br>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_Fluid Simulation Cylinder Laminar Flow Streamline View.png" height="500px" width="500px"><br><br>
+            <b> Figure VI: Laminar Flow Chamber(Streamline View)    </b><br><br><br></div>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_Fluid Simulation Cylindrical Laminar Vector View.png" height="500px" width="500px"><br><br>
+            <b> Figure VII: Laminar Flow Chamber(Vector View)    </b><br><br><br></div>
+
+        <p>
+            &nbsp &nbsp &nbsp The mechanical testing device is the most exciting part of my endeavour. Two force sensors, whose resistances change predictably 
+            with force applied to the surface, have been <a href="https://www.amazon.com/Pressure-Precise-Force-Sensitive-Resistor-Resistance-type/dp/B07T1CHY58/ref=asc_df_B07T1CHY58/?tag=hyprod-20&linkCode=df0&hvadid=475788796522&hvpos=&hvnetw=g&hvrand=1748295741168025868&hvpone=&hvptwo=&hvqmt=&hvdev=m&hvdvcmdl=&hvlocint=&hvlocphy=9016853&hvtargid=pla-1002375752122&psc=1">purchased</a>. Based on the datasheet, a Force(g) - Resistance(ohms) relationship 
+             has been derived on Google Sheet; a relationship of higher accuracy needs to be obtained but it’s functionally 
+             reliable for experimental purposes. Using the principle of voltage divider, the resistance across the force
+              sensor is calculated and further converted into force with a little bit code on Arduino. Along with the known surface property of the force sensor(8mm 
+              in diameter), the pressure on the surface can be calculated.
+        </p>
+        <p>
+            &nbsp &nbsp &nbsp An ultrasonic sensor will be incorporated into the system to measure the distance change such that Young’s Modulus can 
+            be calculated with the device. A pushing mechanism(shownin Figure X) will be driven by a DC motor and controlled by a 
+            joystick to enable the movement of the device. A physical image of the current circuit is shown in Figure VIII. An incomplete 
+            circuit diagram is in Figure IX(the software doesn’t have a joystick or a power supply). 
+        </p><br><br>
+
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_Physical_Circuit.png" height="500px" width="500px"><br><br>
+            <b> Figure IX: Physical Circuit    </b><br><br><br></div>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_Circuit_Diagram.png" height="500px" width="500px"><br><br>
+            <b> Figure X: Circuit Diagram. Missing power supply and joystick </b><br><br><br></div>
+        <p>
+            &nbsp &nbsp &nbsp A linear actuator has been designed but it requires further modifications after simulation
+            to reduce the risk of mechanical failures. 
+        </p><br><br>
+        <div class="image" align = "center"><img src="D_Bottino_Fall23_Linear_Actuator.png" height="500px" width="500px"><br><br>
+            <b> Figure XI: Linear Actuator </b><br><br><br></div>
+        
+    </div>
+</body>
