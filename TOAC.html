@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Lu Project - TOAC</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="awards.html">Awards</a>
+        </div>
+    </nav>
+
+    <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center;">
+            <h2 style="font-size: 28px; margin-bottom: 20px;">A Universal Microchip for Cytocompatibility Study:</h2>
+            <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                With a 3D printed mold, we used polymers made from mixing silicone elastomer (Sylgard 184) and its curing agent at a 10:1 ratio to copy the detailed structure 
+                of the mold. A dentin is placed in the middle of the channel, cell suspension is introduced from the top of the chip, and microscopy images are taken to 
+                study the cell behaviors over the course of time.
+            </p>
+
+            <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                When microscopy image is taken after staining, it is observed that cells percipitate and proliferate on top of the dentin disk. Boundaries between individual nucleus 
+                aren't apparent enough for quantification of cells. However, it is still helpful to determine the area ratio between red and green regions to understand the cell viability. 
+                Hence, a project-specific <a href="https://victorlu2220.github.io/cell-viability-calculator/"> algorithm</a> is developed and published on a github to calculate this rgb-based area ratio. 
+            </p>
+        </div>
+
+        <section>     
+            <img src="TOAC_img/TOAC dim.png" class="images">   
+            <img src="TOAC_img/TOAC.png" class="images">
+            <img src="TOAC_img/TOAC microsc1.png" class="images">
+            <img src="TOAC_img/TOAC microsc2.jpg" class="images">
+
+            <div class="img_exp" style="line-height: 1.6;">
+                <b>Figure I</b>: Displays the dimensions of the 3D-printed chip. <b>Figure II</b>: Shows the chip filled with a colored solution, with no leakage observed. The narrow channels allow fluid to flow. 
+                <b>Figure III</b>: A microscopy image captured immediately after introducing the cell suspension to the chip. <b>Figure IV</b>: A microscopy image taken after 10 days of cell culture in the chip. 
+                The bright green region at the bottom indicates dentin, while the remaining green areas represent living cell membranes(stained after biochemical reaction happened at the surface of a healthy membrane),
+                and the red regions denote dead cells(stained after the dye entered the malfunctioned cell membrane and reacted with nucleus). 
+            </div>
+            
+        </section>
+        <br>
+<hr>
+        <div style="text-align: left;">
+            <h3 style="font-size: 24px; ">Current and future work: </h3>
+            <p style="font-size: 16px; line-height: 1.5;"> Develop a 4-electrode system to monitor cell populations in real-time. Cell membranes act as natural barriers to current flow due to their insulating 
+                lipid bilayer and surface charge, meaning that an increase in the number of live cells within a fixed-volume medium will likely result in higher electrical resistance. The 4-electrode 
+                system, which uses one pair of electrodes for voltage measurement and another pair for current supply, minimizes interference from capacitive effects at the electrode-solution interface, 
+                thereby enhancing the accuracy of the voltage measurements. Such a design should enable us to observe qualitative change in the device.
+            </p>
+        </div>
+
+
+    </section>
+
+</body>
+</html>

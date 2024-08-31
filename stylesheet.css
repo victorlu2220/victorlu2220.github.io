@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+h1 {
+    font-size: 36px;
+    color: #b30000;
+    margin-bottom: 10px;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around; /* Or use space-between */
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.image-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+    height: 10;           /* Optional: Centers the image within the viewport height */
+}
+
+#profile-pic {
+    width: 200px;
+    height: 200px; /* Optional: Ensures the image scales within its container */
+    height: auto;
+    border-radius: 50%;
+}
+
+#profile {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#academic-interests {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#academic-interests h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+#academic-interests ul {
+    list-style-position: inside; /*  Keeps the list dot inside the text alignment */
+    padding-left: 0; /* Removes any default padding */
+    text-align: center; /* Centers the text and the list dots */
+}
+
+#academic-interests ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+footer h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 18px;
+}
+
+footer a {
+    color: #b30000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.images{
+    width: 500px;
+    height: 500px;
+    height: auto;
+}
+
+.schematics{
+    text-align: center;
+}

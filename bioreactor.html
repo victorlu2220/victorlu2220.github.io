@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Lu Project - Bioreactor</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="awards.html">Awards</a>
+        </div>
+    </nav>
+
+    <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center;">
+            <h2 style="font-size: 28px; margin-bottom: 20px;">A Bioreactor for In Vitro Testing of Bone Graft:</h2>
+            <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                Unicameral Bone Cysts(UBCs) are found primarily in children and cause severe pain if left untreated. During 
+                treatment, surgeons extract fluid from the cysts and fill the void with bone-graft biomaterial. This surgical 
+                treatment can be expensive and requires a longer recovery period. In order to minimize cost and recovery time, a 
+                minimally invasive treatment procedure is ideal. The goal of this project is to create a bone-graft biomaterial 
+                that is easily injected into the UBC patient and it can still mimic the mechanical properties of natural bone. To 
+                test this biomaterial, a bioreactor will also be fabricated to test the samples in an environment that mimics the 
+                in vivo conditions in the body. The final injectable biomaterial will help make UBC treatment more
+                 accessible to patients by providing a minimally invasive treatment that lowers cost and recovery time.
+            </p>
+        </div>
+
+        <section>   
+            <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                The bioreactor is a glass vessel equipped with a stirring bar placed on top of a magnetic stirrer with a heating plate. 
+                Bone grafts are created with calcium sulfate. Compression tests was conducted on multiple bone grafts for analysis of mechanical
+                properties. Bone grafts are placed within the bioreactor for a duration of 7 days. Phenol red is added to the solution to monitor 
+                pH changes. A thermistor is probed into the solution to monitor the temperature change. An amplifier circuit is built for 
+                the thermistor, and a beefcake relay is integrated into the circuit to protect the low-voltage Arduino microcontroller 
+                from the 110V high-voltage source. The data collected was analyzed using MATLAB to check if temperature was indeed consistently
+                around 37 degrees and if the bone graft samples mechanical properties are close to native bones. 
+            </p>
+
+            <img src="bioreactor_img/bioreactor flowchart.png" class="images">
+            <img src="bioreactor_img/microcontroller block diagram.png" class="images">
+            <div style="line-height: 2;"> Figure a). <b>Systematic Block Diagram for the Bioreactor. &nbsp</b> Figure b). <b> Block Diagram for the circuit</b></div>
+            <img src="bioreactor_img/circuit flowchart.png" class="images">
+            <img src="bioreactor_img/circuit diagram.png" class="images">
+            <div style="line-height: 2;"> Figure c). <b>Flow chart for microcontroller algorithm. &nbsp</b> Figure d). <b>Amplifier Circuit Diagram</b></div>
+            <div style="position: relative; overflow: hidden;">
+                <div style="float: right; width: 30%; margin-top: -10px; padding-right: 300px;">
+                    <img src="bioreactor_img/temp.png" style="width: 400px; height: 200px; padding-top: 10px;">
+                    <img src="bioreactor_img/tempbox.png" style="width: 400px; height: 200px;">
+                    <img src="bioreactor_img/YM_box.png" style="width: 400px; height: 200px;">
+                </div>
+        
+                <img src="bioreactor_img/final circuit.png" class="images" style="float: left;"> 
+            </div>
+        
+            <div style="line-height: 2;"> Figure e). <b>Assembled Circuit </b>&nbsp Figure f). <b> Data analysis on MATLAB</b>. </div>
+            
+        </section>
+
+
+    </section>
+
+</body>
+</html>
