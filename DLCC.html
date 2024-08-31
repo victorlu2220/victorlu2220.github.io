@@ -41,7 +41,10 @@
                   small regions, allowing for random sampling of points from the image. These sampled points are then appended to the RGB 
                   information list of the image, ensuring that larger images do not disproportionately influence the training results. 
                   Similarly, thresholds were defined for green and black regions, but for these two types, both minimum and maximum 
-                  thresholds were established.
+                  thresholds were established. After creating a 3D visualization plot for the HSV values for all of the data point, it is 
+                  observed that there is significant overlap between green and blue region. Without filtering, the final processed image usually
+                  overclassified blue region. Therefore, blue in overlapping region was reduced by 99.9%(determined experimentally). Leaving only 
+                  a small amount of "healthy" overlaps, the comparison before and after filtering can be seen in Supplementary a. 
             </p>
             
             <p>  
@@ -77,6 +80,12 @@
             </div>
 
         </section>
+        <div style="text-align: center; ">
+            <img src="DL_img/3D HSV.png" style="height: 400px; width: 500px;">
+            <p>
+                Supplementary a). <b>3D HSV Graph for Training Dataset</b>. 
+            </p>
+        </div>
 
 
     </section>
