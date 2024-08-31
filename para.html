@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Lu Project - Paralysis</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="awards.html">Awards</a>
+        </div>
+    </nav>
+
+    <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center;">
+            <h2 style="font-size: 28px; margin-bottom: 20px;">Paralysis Recovery Training</h2>
+            <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                In this project, we designed a two-stage amplifier circuit (Figure c) to acquire and amplify signals. This configuration is beneficial because the high input impedance
+                of the AD620 prevents signal loss and improves the signal-to-noise ratio (SNR). For detecting EMG signals, which serve as inputs for the circuit, the <span style="color: red;">right arm’s lateral Brachioradialis 
+                muscle</span> is targeted to sample signals associated with <span style="color: red;">downward</span> wrist movements. Signals for wrist movements to the <span style="color: green;">left</span> are sampled from the <span style="color: green;">right
+                arm’s inferior Extensor Carpi Ulnaris muscle</span>. <span style="color: orange;">Upward wrist movements</span> are sampled from the <span style="color: orange;">Flexor Carpi Ulnaris muscle of the left arm</span>, and 
+                <span style="color: blue;">movements to the right</span> are captured from the <span style="color: blue;">inferior Extensor Carpi Ulnaris muscle on the left arm</span>. Electrode placement
+                locations were determined experimentally. Each muscle site is equipped with two electrodes connected to the positive and negative inputs of the AD620, ensuring precise (reduced common-mode noise) and isolated (from one muscle) readings of the EMG activity. 
+                This setup allows for robust and accurate monitoring of muscle dynamics during varied wrist movements.
+            </p>
+            <img src="para_img/anatomy.jpg" class="images" alt="Forearm Anatomy">
+            <p>Figure 1). <b>The Anatomy of the Forearm</b>. Acquired from https://www.sportsinjuryclinic.net/anatomy/wrist-anatomy. </p>
+            <div>
+                <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                    For data acquisition, analysis, and the interactive game, we used Python. The Python nidaqmx module was used to read the signal as arrays with 1000 points per second.
+                    The four input channels are stored in data[0] through data[3]. We analyze the wrist position every 500ms using the array segment obtained during that time period. Since 
+                    the electrodes are placed where the signal is strongest for a specific wrist movement and minimal for others, we used peak-to-peak detection to classify the signal. Data[0] corresponds to the right wrist’s upward movement, 
+                    data[1] to the right wrist’s rightward movement, data[2] to the left wrist’s leftward movement, and data[3] to the downward movement. We then compare the peak-to-peak (ptp) value (Figures a, b) with the threshold calibrated each 
+                    time the electrodes are attached to classify the movement. The calibration process is conducted with an oscilloscope and a custom calibration script.
+                </p>
+
+                <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                    An interesting observation is that the order of classification affects accuracy. We found that during left and right movements, the electrodes recording up and down movements also show increased signals, but not vice versa. Therefore, left and right classifications are prioritized before up and down classifications.
+                </p>
+                <img src="para_img/resting EMG.png" class="images" alt="Resting EMG Signal">
+                <img src="para_img/active EMG.png" class="images" alt="Active EMG Signal">
+                <p>
+                    Figure a). <b>EMG Signal collected when the volunteer's wrist is at rest</b>; Figure b). <b>EMG Signal when the volunteer is moving his wrist</b>. 
+                </p>
+
+                <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                    An interactive maze game was built using the Pygame module and displayed with TkInter. 
+                    The game begins with the initialization of a box with n x n black grids, each assigned a coordinate and stored in a 
+                    two-dimensional array. An explorer grid moves probabilistically(25% in each direction when it's not on edges, if it's at either top or left edge, 
+                    it has 33% chance of moving in only three direction) within the box, and its previous and current positions are stored in a list. When it reaches the 
+                    bottom or right edge, the explorer box is deactivated, indicating that the game is ready to start. The red grid 
+                    represents the starting position, and the green grid represents the destination. The player is only allowed to move within the white grids and the maze can 
+                    be regenerate using the button at the bottom.
+                </p>
+                <img src="para_img/circuit diagram.png" class="images" style="height:400px " alt="Circuit Diagram">
+                <img src="para_img/maze_sample.png" class="images" alt="Sample Maze">
+                <p>
+                    Figure c). <b>Circuit Diagram</b>; Figure d). <b>A Sample Maze Generated by the Python Code using Pygame</b>. 
+                </p>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>
