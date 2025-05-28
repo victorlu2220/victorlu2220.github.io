@@ -147,3 +147,11 @@ footer a:hover {
 .schematics{
     text-align: center;
 }
+
+.MEMS{
+    font-size: 16px; line-height: 1.5; color: #333; text-align: left
+}
+
+.circuits{
+    font-size: 16px; line-height: 1.5; color: #333; text-align: left
+}
