@@ -6,11 +6,13 @@ body {
     color: #333;
 }
 
-header {
+header, footer {
     background-color: #fff;
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
 }
 
 h1 {
@@ -19,7 +21,10 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Navigation Bar */
+h2, h3 {
+    margin-bottom: 10px;
+}
+
 nav {
     background-color: #333;
     padding: 10px 0;
@@ -31,127 +36,96 @@ nav {
 
 .nav-links {
     display: flex;
-    justify-content: space-around; /* Or use space-between */
+    justify-content: space-around;
     align-items: center;
 }
 
-.nav-links a {
+.nav-links a,
+a {
     color: white;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
-}
-
-.image-container {
-    padding: 20px;
-    display: flex;
-    justify-content: center; /* Centers the image horizontally */
-    height: 10;           /* Optional: Centers the image within the viewport height */
-}
-
-#profile-pic {
-    width: 200px;
-    height: 200px; /* Optional: Ensures the image scales within its container */
-    height: auto;
-    border-radius: 50%;
-}
-
-#profile {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center;
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#profile p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
 a {
     color: #0056b3;
-    text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
+/* Content Containers */
+#profile,
 #academic-interests {
-    padding: 20px;
     max-width: 800px;
     margin: 20px auto;
+    padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
 
-#academic-interests h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
+#profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile p,
+#academic-interests ul li,
+footer p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#academic-interests {
+    text-align: center;
 }
 
 #academic-interests ul {
-    list-style-position: inside; /*  Keeps the list dot inside the text alignment */
-    padding-left: 0; /* Removes any default padding */
-    text-align: center; /* Centers the text and the list dots */
+    list-style-position: inside;
+    padding-left: 0;
 }
 
-#academic-interests ul li {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-footer {
-    background-color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-}
-
+#academic-interests h2,
 footer h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-footer p {
-    font-size: 18px;
+    font-size: 28px;
 }
 
 footer a {
     color: #b30000;
-    text-decoration: none;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.image-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-.images{
+#profile-pic {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.images {
     width: 500px;
-    height: 500px;
     height: auto;
 }
 
-.schematics{
+.schematics {
     text-align: center;
 }
 
-.MEMS{
-    font-size: 16px; line-height: 1.5; color: #333; text-align: left
-}
-
-.circuits{
-    font-size: 16px; line-height: 1.5; color: #333; text-align: left
+/* Unified content styling classes */
+.MEMS,
+.circuits,
+.dataset,
+.results {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
 }
