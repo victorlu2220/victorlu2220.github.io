@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Lu Project - Medical Suturing</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="awards.html">Awards</a>
+        </div>
+    </nav>
+
+    <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center;">
+            <h2 style="font-size: 28px; margin-bottom: 20px;">Real-time Tracking for Medical Suturing</h2>
+
+            <p id="abstract" style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+                <b style="font-size: x-large;">Abstract:</b> Accurate needle and thread tracking is essential for safe and efficient surgical suturing, particularly in minimally invasive procedures. 
+                This project presents a real-time tracking system that combines computer vision and sensor fusion to monitor suturing dynamics and provide live feedback. 
+                To enable precise segmentation of the surgical tools, three deep learning architectures—UNet, nnUNet, and Attention-UNet—were implemented and compared using a labeled dataset. 
+                The system supports responsive and reliable performance, offering potential for integration into robotic surgical tools and AR-based training platforms.
+            </p>
+
+            <hr>
+
+            <!-- Data Preparation -->
+            <h3><b style="font-size: x-large;">Data Preparation</b></h3>   
+
+            <div id="dataset" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+                <p class="dataset">
+                    <b style="font-size: large;">Dataset: </b>
+                    The dataset consists of real-world surgical suturing videos, which were decomposed into individual frames for analysis. In the end, we have around
+                    10,000 frames for medical scalpels but only 410 frames for threads due to difficulty in labeling. 
+                </p>
+
+                <img src="suturing_img/dataset example.jpg" style="width: 50%; height: 350px">
+
+                <p class="dataset">
+                    <b style="font-size: large;">Masking: </b>
+                    A user-friendly UI is developed in order to assist in the data labeling, especially for the thin threads. An example
+                    can be seen at the image below. Note that the color represents directionality: green for head and blue for tail. This 
+                    is helpful for inference tasks in the future. 
+                </p>
+
+                <div style="display: flex; justify-content: center; gap: 10px; padding: 20px;">
+                    <img src="suturing_img/UI screenshot.png" style="width: 50%; height: 350px; object-fit: cover;">
+                    <img src="suturing_img/mask example.bmp" style="width: 50%; height: 350px; object-fit: cover;">
+                </div>
+
+                <p class="dataset">
+                    <b style="font-size: large;">Video Formation: </b>
+                    We used Python to develop a user interface that overlays labeled masks onto the original frames and reconstructs
+                    the original video with the masks applied.
+                </p>  
+
+                <p class="dataset"> 
+                    <b style="font-size: large;">Data Preprocessing: </b>
+                    With the help of the nnUNet preprocessing tool documented on 
+                    <a href="https://github.com/MIC-DKFZ/nnUNet">this website</a>, we were able to 
+                    keep our dataset format consistent and compatible with different model architectures, streamlining training and evaluation.
+                </p>       
+            </div>
+
+            <hr>
+
+            <!-- Training and Results -->
+            <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+                <h3><b style="font-size: x-large;">Training and Results</b></h3>
+
+                <p class="results">
+                    We trained three different models: UNet, nnUNet, and Attention-UNet. The results are shown below. In the future, better evaluations should be 
+                    conducted with larger datasets, especially for thread tracking. Additionally, the discontinuity in thread masks poses challenges for 
+                    inference, as it prevents the system from accurately interpreting the thread's location and state. This issue could be mitigated by incorporating 
+                    ConvLSTM to generate more coherent and continuous predictions.
+                </p>
+
+                <!-- UNet Section -->
+                <div style="margin-top: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+                    <h4>UNet</h4>
+                    <div style="display: flex; justify-content: center; gap: 10px; padding-top: 10px;">
+                        <img src="suturing_img/UNet Instrument Result.png" style="width: 50%; height: 350px;">
+                        <img src="suturing_img/UNet Thread Result.png" style="width: 50%; height: 350px;">
+                    </div>
+                </div>
+
+                <!-- nnUNet Section -->
+                <div style="margin-top: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+                    <h4>nnUNet</h4>
+                    <div style="display: flex; justify-content: center; gap: 10px; padding-top: 10px;">
+                        <img src="suturing_img/nnUNet Instrument Result.png" style="width: 50%; height: 350px;">
+                        <img src="suturing_img/nnUNet Thread Result.png" style="width: 50%; height: 350px;">
+                    </div>
+                </div>
+
+                <!-- Attention UNet Section -->
+                <div style="margin-top: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+                    <h4>Attention-UNet</h4>
+                    <div style="display: flex; justify-content: center; gap: 10px; padding-top: 10px;">
+                        <img src="suturing_img/attention UNet Instrument Result.png" style="width: 50%; height: 350px;">
+                        <img src="suturing_img/attention UNet Thread Result.png" style="width: 50%; height: 350px;">
+                    </div>
+                </div>
+
+                <!-- Video Demos -->
+                <h4> Instrument Tracking </h4>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 30px;">
+                    <video style="width: 32%; height: 350px;" controls>
+                        <source src="suturing_img/UNet instrument.mp4" type="video/mp4">
+                    </video>    
+
+                    <video style="width: 32%; height: 350px;" controls>
+                        <source src="suturing_img/nnUNet instrument.mp4" type="video/mp4">
+                    </video>  
+
+                    <video style="width: 32%; height: 350px;" controls>
+                        <source src="suturing_img/attention UNet instrument.mp4" type="video/mp4">
+                    </video>   
+                </div>
+
+                <h4> Thread Tracking </h4>
+
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 30px;">
+                    <video style="width: 32%; height: 350px;" controls>
+                        <source src="suturing_img/UNet thread.mp4" type="video/mp4">
+                    </video>    
+
+                    <video style="width: 32%; height: 350px;" controls>
+                        <source src="suturing_img/nnUNet thread.mp4" type="video/mp4">
+                    </video>  
+
+                    <video style="width: 32%; height: 350px;" controls>
+                        <source src="suturing_img/attention UNet thread.mp4" type="video/mp4">
+                    </video>   
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
