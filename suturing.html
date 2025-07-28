@@ -49,8 +49,8 @@
                 </p>
 
                 <div style="display: flex; justify-content: center; gap: 10px; padding: 20px;">
-                    <img src="suturing_img/UI screenshot.png" style="width: 50%; height: 350px; object-fit: cover;">
-                    <img src="suturing_img/mask example.bmp" style="width: 50%; height: 350px; object-fit: cover;">
+                    <img src="suturing_img/UI screenshot.jpg" style="width: 50%; height: 350px; object-fit: cover;">
+                    <img src="suturing_img/mask example.png" style="width: 50%; height: 350px; object-fit: cover;">
                 </div>
 
                 <p class="dataset">
@@ -74,10 +74,10 @@
                 <h3><b style="font-size: x-large;">Training and Results</b></h3>
 
                 <p class="results">
-                    We trained three different models: UNet, nnUNet, and Attention-UNet. The results are shown below. In the future, better evaluations should be 
-                    conducted with larger datasets, especially for thread tracking. Additionally, the discontinuity in thread masks poses challenges for 
-                    inference, as it prevents the system from accurately interpreting the thread's location and state. This issue could be mitigated by incorporating 
-                    ConvLSTM to generate more coherent and continuous predictions.
+                    We trained three different models: UNet, nnUNet, and Attention-UNet. The results are shown below. Our experiment has shown that nnUNet
+                    outperforms both UNet and attention-UNet using the given dataset. In the future, better evaluations should be conducted with larger datasets, 
+                    especially for thread tracking. Additionally, the discontinuity in thread masks poses challenges for inference, as it prevents the system from 
+                    accurately interpreting the thread's location and state. This issue could be mitigated by incorporating ConvLSTM to generate more coherent and continuous predictions.
                 </p>
 
                 <!-- UNet Section -->
@@ -109,7 +109,7 @@
 
                 <!-- Video Demos -->
                 <h4> Instrument Tracking </h4>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 30px;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 10px;">
                     <video style="width: 32%; height: 350px;" controls>
                         <source src="suturing_img/UNet instrument.mp4" type="video/mp4">
                     </video>    
@@ -125,7 +125,14 @@
 
                 <h4> Thread Tracking </h4>
 
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 30px;">
+                <p class="results">
+                    The results for thread tracking of both UNet and nnUNet seem to be "digitized". This is because our masks were generated using
+                    the shrinked frames that we intentionally made during the data preparation step(resizing). When we try to superimpose the generated masks
+                    and the original frames, there is a size mismatch. During the scaling process, we "stretched" the dimensions back up and this is visually 
+                    seen as the digitization. 
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 10px;">
                     <video style="width: 32%; height: 350px;" controls>
                         <source src="suturing_img/UNet thread.mp4" type="video/mp4">
                     </video>    
@@ -136,7 +143,7 @@
 
                     <video style="width: 32%; height: 350px;" controls>
                         <source src="suturing_img/attention UNet thread.mp4" type="video/mp4">
-                    </video>   
+                    </video>
                 </div>
             </div>
         </div>
