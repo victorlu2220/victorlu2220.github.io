@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -15,16 +16,18 @@ header, footer {
     border-right: none;
 }
 
+/* Headings */
 h1 {
     font-size: 36px;
     color: #b30000;
     margin-bottom: 10px;
 }
 
-h2, h3 {
+h2, h3, h4 {
     margin-bottom: 10px;
 }
 
+/* Navigation */
 nav {
     background-color: #333;
     padding: 10px 0;
@@ -40,23 +43,28 @@ nav {
     align-items: center;
 }
 
-.nav-links a,
-a {
+.nav-links a {
     color: white;
-    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
+    text-decoration: none;
 }
 
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Global Link Styles */
 a {
     color: #0056b3;
+    text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* Content Containers */
+/* Containers */
 #profile,
 #academic-interests {
     max-width: 800px;
@@ -84,20 +92,22 @@ footer p {
     text-align: center;
 }
 
-#academic-interests ul {
-    list-style-position: inside;
-    padding-left: 0;
-}
-
 #academic-interests h2,
 footer h3 {
     font-size: 28px;
 }
 
+#academic-interests ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+/* Footer */
 footer a {
     color: #b30000;
 }
 
+/* Image Handling */
 .image-container {
     padding: 20px;
     display: flex;
@@ -119,7 +129,7 @@ footer a {
     text-align: center;
 }
 
-/* Unified content styling classes */
+/* Section-Specific Paragraph Styles */
 .MEMS,
 .circuits,
 .dataset,
