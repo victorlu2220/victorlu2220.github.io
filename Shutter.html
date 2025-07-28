@@ -21,68 +21,98 @@
       <h2 style="font-size: 28px; margin-bottom: 20px;">Thermally Actuated Optical Shutter</h2>
 
       <p id="abstract" style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
-        <b style="font-size: x-large;">Abstract:</b> Standard laser cutting and engraving systems require shutters to prevent continuous laser exposure, which can cause thermal effects on the substrate that limit resolution and precision. This project presents a MEMS laser shutter with a tunable frequency of operation, enabling its usage in a variety of micro-laser applications. By supporting precise frequencies, the machine aims to obtain a flexible and efficient laser shutter system. The proposed control mechanism uses a microcontroller-operated, voltage-controlled ring oscillator to ensure precise switching frequencies.
+        <b style="font-size: x-large;">Abstract:</b> Standard laser cutting and engraving systems require shutters to prevent continuous laser exposure, which can cause thermal 
+        effects on the substrate that limit resolution and precision. This project presents a MEMS laser shutter with a tunable frequency of operation,
+        enabling its usage in a variety of micro-laser applications. By supporting precise frequencies, the machine aims to obtain a flexible and 
+        efficient laser shutter system. The proposed control mechanism uses a microcontroller-operated, voltage-controlled ring oscillator to ensure 
+        precise switching frequencies.
       </p>
 
-      <section>
-        <div>
+      <section>   
+        <div>  
           <img src="Shutter_img/overall.png" id="overall_fab" style="width: 40%;">
-        </div>
+        </div>   
         <p><b>Figure I</b>. Fabricated MEMS device under the Microscope.</p>
       </section>
 
       <hr>
 
+      <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div id="MEMS" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         <h3><b style="font-size: x-large;">MEMS Modeling, Fabrication and Testing:</b></h3>
-        <p class="MEMS">Our MEMS device is designed based on a silicon-on-glass(SOG) model...</p>
-        <p id="modeling" class="MEMS"><b style="font-size: large;">Modeling:</b> Modelings were done on COMSOL using the Solid Mechanics...</p>
 
-        <img src="Shutter_img/COMSOLOverview.png" style="width: 30%; height: 350px">
-        <img src="Shutter_img/Temperature.png" style="width: 30%; height: 350px">
-        <img src="Shutter_img/Stress.png" style="width: 30%; height: 350px">
+        <p class="MEMS">
+          Our MEMS device is designed based on a silicon-on-glass(SOG) model, in which the glass functions 
+          as anchoring while silicon is the key for both electrical conduction and displacement, which leads to capacitance changes. 
+        </p>
 
-        <p id="mask layout" class="MEMS"><b style="font-size: large;">MEMS Mask Layouts:</b> Mask layout was done using AutoCAD...</p>
-        <img src="Shutter_img/Mask.png" style="width: 50%; height: 350px">
+        <p id="modeling" class="MEMS">
+          <b style="font-size: large;">Modeling: </b> Modelings were done on COMSOL using the Solid Mechanics, Electrostatics and Heat Transfer physics. The goal is to optimize the 
+          deflection while minimizing the time constant, such that the switching between ON/OFF state is fast enough to achieve the desired frequency range between 40Hz and 140Hz. Parametric 
+          sweeps were done for dimensional parameters such as chevron beam lengths, actuator beam lengths and shutter length.To validate our design, we examined the maximum temperature, stress, 
+          and minimum feature size on the surface to ensure they met safety standards: staying below the melting point and fracture strength of silicon, and above the 5 µm minimum feature size 
+          requirement.
+        </p>
 
-        <p id="mems testing" class="MEMS"><b style="font-size: large;">Testing:</b> The fabricated MEMS chip was tested...</p>
-        <img src="Shutter_img/Testing.png" style="width: 50%; height: 350px">
+        <img src="Shutter_img/COMSOLOverview.png" id="COMSOL Overview" style="width: 30%; height: 350px">
+        <img src="Shutter_img/Temperature.png" id="Temp" style="width: 30%; height: 350px">
+        <img src="Shutter_img/Stress.png" id="Stress" style="width: 30%; height: 350px">
 
-        <p class="MEMS">Here is a short clip of our MEMS optical shutter operating with 1.6A of current...</p>
-        <video style="width: 50%; height: 350px;" controls>
+        <p id="mask layout" class="MEMS">
+          <b style="font-size: large;">MEMS Mask Layouts: </b>
+          Mask layout was done using AutoCAD. There are three layers:
+          <span style="color: yellow; background-color: grey;">glass layer</span> (yellow) for anchoring,
+          <span style="color: purple; background-color: grey;">platinum layer</span> (purple) to prevent back-etching at open areas,
+          <span style="color: green; background-color: grey;">aluminum layer</span> (green) for the doge design, and
+          <span style="color: cyan; background-color: grey;">silicon layer</span> (cyan) for modeled MEMS.
+        </p>
+
+        <img src="Shutter_img/Mask.png" id="mask" style="width: 50%; height: 350px">
+
+        <p id="mems testing" class="MEMS">
+          <b style="font-size: large;">Testing: </b>The fabricated MEMS chip was tested on a bench with various current inputs after cleaning each pad with 80mA of current. With the help of 
+          angle ruler, we are able to approximate the displacement at the tip. 
+        </p>
+
+        <img src="Shutter_img/Testing.png" id="mask" style="width: 50%; height: 350px">
+
+        <p class="MEMS">Here is a short clip of our MEMS optical shutter operating with 1.6A of current, splitted among 4 chevrons.</p>
+        <video id="MEMS_1600mA" style="width: 50%; height: 350px;" controls>
           <source src="Shutter_img/full view mems testing.mp4" type="video/mp4">
         </video>
 
-        <p class="MEMS">Here is a short clip of the MEMS optical shutter being <b>burnt</b> at 1A...</p>
-        <video style="width: 50%; height: 350px;" controls>
+        <p class="MEMS">Here is a short clip of the MEMS optical shutter being <b>burnt</b> at 1A(ideally it should endure 2A of current)...</p>
+        <video id="MEMS_1000mA" style="width: 50%; height: 350px;" controls>
           <source src="Shutter_img/failure mode.mp4" type="video/mp4">
         </video>
       </div>
 
       <hr>
 
-      <div id="Circuits" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+      <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+      <div id="MEMS" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         <h3><b style="font-size: x-large;">Circuits</b></h3>
 
         <p id="circuit intro" class="circuits">The circuit design includes three main devices that allow the system to function together...</p>
         <img src="Shutter_img/circuit schematics.png" style="width: 50%; height: 350px;">
 
-        <p id="DAC" class="circuits">We used a <b>ladder DAC</b> and carefully tuned the W/L ratio...</p>
+        <p id="DAC" class="circuits">We used a <b>ladder DAC</b> and carefully tuned the W/L ratio of each transistor in order to achieve desired output frequency precision for each voltage input.</p>
         <img src="Shutter_img/DAC.png" style="width: 40%; height: 350px;">
         <img src="Shutter_img/DAC output.png" style="width: 40%; height: 350px;">
 
-        <p id="VCO" class="circuits">A <b>voltage controlled oscillator</b> is constructed to generate sine waves...</p>
+        <p id="VCO" class="circuits">A <b>voltage controlled oscillator</b> is constructed to generate sine waves of frequencies determined by DAC output.</p>
         <img src="Shutter_img/VCO.png" style="width: 40%; height: 350px;">
         <img src="Shutter_img/VCO output.png" style="width: 40%; height: 350px;">
 
-        <p id="ST" class="circuits">With the help of a <b>Schmitt Trigger</b>, the system is able to transform the output from a sine wave...</p>
+        <p id="ST" class="circuits">With the help of a <b>Schmitt Trigger</b>, the system is able to transform the output from a sine wave to square wave, which reduces latency...</p>
         <img src="Shutter_img/ST.png" style="width: 40%; height: 350px;">
         <img src="Shutter_img/ST output.png" style="width: 40%; height: 350px;">
 
-        <p id="OCS" class="circuits">The off-chip circuit consists of a <b>boost converter</b> to increase the Schmitt Trigger output...</p>
+        <p id="OCS" class="circuits">The off-chip circuit consists of a <b>boost converter</b> to increase the Schmitt Trigger output from 3.3V to about 5V...</p>
         <img src="Shutter_img/off chip schematics.png" style="width: 80%; height: 350px;">
         <img src="Shutter_img/off chip circuit diagram.png" style="width: 80%; height: 350px;">
       </div>
+
     </div>
   </section>
 
