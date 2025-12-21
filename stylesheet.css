@@ -130,6 +130,8 @@ footer a {
 }
 
 /* Section-Specific Paragraph Styles */
+li,
+.vein,
 .MEMS,
 .circuits,
 .dataset,

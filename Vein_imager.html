@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victor Lu Project - Near Infrared Vein Imager</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-links">
+      <a href="homepage.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="awards.html">Awards</a>
+    </div>
+  </nav>
+
+  <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <div style="text-align: center;">
+      <h2 style="font-size: 28px; margin-bottom: 20px;">Near Infrared Vein Imager</h2>
+      
+      <div style="text-align: center; margin: 20px 0;">
+        <a href="https://github.com/Richardn2002/fpga-ir-vein-imaging" target="_blank" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #24292e; /* GitHub Black */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: sans-serif;">
+            View Source on GitHub
+        </a>
+</div>
+
+      <p id="abstract" style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+        <b style="font-size: x-large;">Abstract:</b> This project presents an FPGA-based infrared vein imaging system implemented entirely in VHDL. The system captures near-infrared images of 
+        subcutaneous veins and performs real-time image processing on an FPGA to enhance vein visibility. The design focuses on efficient, low-latency 
+        hardware pipelines for image acquisition, processing, and display.
+      </p>
+
+      <section>   
+        <div>  
+            <img src="https://raw.githubusercontent.com/Richardn2002/fpga-ir-vein-imaging/refs/heads/main/data/readme/demo.gif" style="width: 40%;" alt="Vein imaging demo">
+        </div>   
+        <p><b>Figure I</b>. A video of the final result: veins are highlighted on the back of the hand.</p>
+      </section>
+
+      <hr>
+
+      <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <h3><b style="font-size: x-large;">Software Workflow</b></h3>
+        <p class="vein">
+            The camera captures videos in grayscale. CLAHE algorithm is applied first to enhance the contrast of the recorded video, followed by Gaussian smoothing to remove noises. 
+            Then derivatives are calculated along the rows and columns to compute the elements of the Hessian matrix H_rr, H_cc, and H_rc. These second-order derivatives (curvatures) 
+            are then combined using a quantized square-root approximation (for computation efficiency) to determine the final Hessian response, effectively highlighting structural features 
+            such as ridges or vessels within the image. A <a href="https://github.com/Richardn2002/fpga-ir-vein-imaging/blob/main/python/golden.py">Python script</a> is written for functionality 
+            examination before the implementation in VHDL. 
+        </p>
+
+        <img src="https://media.githubusercontent.com/media/Richardn2002/fpga-ir-vein-imaging/refs/heads/main/data/readme/full-flow.png" style="width: 75%;" alt="Software workflow">
+        
+        <hr>
+        <br>
+        
+        <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+            <h3><b style="font-size: x-large;">VHDL Development Process</b></h3>
+            <p class="vein">
+                The VHDL implementation is comprised of multiple modules, all of the read and write steps from and to RAMs are synchronous:
+            </p>
+            <ul class="vein">
+                <li><b>Camera control and communication with VGA</b>: The Control module initializes the OV7670 sensor via an I2C state machine, configuring internal registers. The VGA module 
+                    captures the resulting video stream, using sync signals to generate X/Y coordinates and valid pixel data for a 128x128 resolution output.</li> 
+                <li><b>CLAHE mapping and output</b>: The CLAHE mapping module generates the local histogram and produces an LUT, which is used by the output module to determine how the original pixel values 
+                    should be mapped to the new, contrast enhanced pixel values. A top controller module is written to decompose the original 128x128 images into 32x32 patches and process them sequentially 
+                    to build the unique lookup tables for each region.</li> 
+                <li><b>Convolution</b>: The convolution modules take convolutions along the rows and columns by taking the summation of the 5 nearest pixels, averaging out noises. </li>
+                <li><b>Gradient and Output</b>: Gradient modules are used to compute the horizontal and vertical gradients of the convoluted image, these effectively detect edges. Following the first order gradient is the second-order
+                    gradient, which is used to detect curvatures, a critical feature of the vessels. The Hessian output module solves for the Hessian matrix's principal eigenvalue to find principal curvatures for each pixel. It combines the pre-computed 
+                    derivatives, uses an LUT to approximate the square root of the discriminant, and outputs a magnitude indicating the likelihood of a pixel being part of a vessel. </li>
+            </ul>
+            
+            <p class="vein">
+                Prior to system-level integration, each module undergoes functional verification via a testbench. This process involves using Python to convert an input image into a text-based pixel array, which serves as the simulation input. The testbench 
+                processes this data and generates an output file. Finally, the VHDL output is validated against the outputs from golden.py to quantify any discrepancies.
+            </p>
+        </div>
+        
+        <hr>
+        <br>
+        
+        <h3><b style="font-size: x-large;">Hardware Setup</b></h3>
+        <p class="vein">
+            The major hardwares used in this project include: a <a href="https://digilent.com/shop/cmod-a7-35t-breadboardable-artix-7-fpga-module/">Cmod A7-35T</a>, a <a href="https://www.amazon.com/dp/B07S66Y3ZQ">camera module</a>, an <a href="https://www.amazon.com/dp/B0CC48J23S?th=1">
+            infrared light emitter </a>and an <a href="https://www.ebay.com/itm/145128062945">IR Filter</a>. The microcontroller is used as a 3.3V power supply. 
+        </p> 
+
+        <img src="https://media.githubusercontent.com/media/Richardn2002/fpga-ir-vein-imaging/refs/heads/main/data/readme/setup.jpg" style="width: 75%;" alt="Hardware setup">
+        
+        <hr>
+
+      </div>
+    </div> </section>
+
+</body>
+</html>
