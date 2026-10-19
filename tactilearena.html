@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Lu Project - TactileArena</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="awards.html">Awards</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="theme-icon">&#9790;</span>
+            </button>
+        </div>
+    </nav>
+
+    <section id="p1" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center;">
+            <span class="tag" style="margin: 0 auto 14px;">Master's Research · Johns Hopkins University</span>
+            <h2 style="font-size: 30px; margin-bottom: 8px;">TactileArena: the Ground as a Sensor</h2>
+            <p style="color: var(--text-muted); font-size: 16px; margin-top: 0;">
+                Scalable high-density tactile arenas for measuring ground-contact forces in freely moving animals
+            </p>
+
+            <p id="abstract" style="font-size: 16px; line-height: 1.6; color: var(--text-muted); text-align: left; max-width: 900px; margin: 0 auto;">
+                <b style="font-size: x-large; color: var(--text);">The idea: </b>
+                Seen from above, a walking rat hides its paws under its body — video and pose tracking can say where the body is and how
+                it moves, but not how much weight each paw carries. TactileArena puts the measurement where the animal meets the world: the
+                floor itself is a dense grid of pressure sensors (taxels), so every contact appears as an image of the paw pressing down,
+                frame by frame. The overhead camera supplies the body's position and orientation, and the floor supplies the forces. In one
+                recording you get the familiar gait measures (when each paw lands, how long it stays down) plus what video cannot see:
+                how hard each paw pushes, how weight shifts between paws, and how load moves across a single paw during a step.
+            </p>
+
+            <div class="stat-grid" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div class="stat-tile">
+                    <span class="stat-value">16,384</span>
+                    <span class="stat-label">taxels, from four 64&times;64 modules</span>
+                </div>
+                <div class="stat-tile">
+                    <span class="stat-value">2 mm</span>
+                    <span class="stat-label">taxel pitch — resolves a rat's paw print</span>
+                </div>
+                <div class="stat-tile">
+                    <span class="stat-value">~1 kHz</span>
+                    <span class="stat-label">nominal frame rate</span>
+                </div>
+                <div class="stat-tile">
+                    <span class="stat-value">4.9%</span>
+                    <span class="stat-label">of taxels read per frame — the rest is skipped until something presses</span>
+                </div>
+            </div>
+
+            <hr>
+
+            <h3 style="text-align: left; max-width: 900px; margin: 20px auto 10px;"><b style="font-size: x-large;">Why it matters</b></h3>
+            <p class="results" style="max-width: 900px; margin: 0 auto;">
+                We tracked rats for two weeks after a pinch injury to the left sciatic nerve (three injured, two sham-operated). In the
+                first days after surgery, the injured animals kept placing the injured hind paw on the ground — timing alone showed a
+                moderate deficit, but the loading measured by the floor showed a much larger one. The hindpaw's share of stance time fell
+                by about a third, while its share of load fell by about 60%. Both ratios moved back toward baseline by days 11&ndash;13.
+            </p>
+
+            <div class="stat-grid" style="max-width: 500px; margin-left: auto; margin-right: auto;">
+                <div class="stat-tile">
+                    <span class="stat-value">&minus;0.33</span>
+                    <span class="stat-label">change in timing ratio (days 1&ndash;5)</span>
+                </div>
+                <div class="stat-tile">
+                    <span class="stat-value">&minus;0.61</span>
+                    <span class="stat-label">change in loading ratio (days 1&ndash;5)</span>
+                </div>
+            </div>
+
+            <hr>
+
+            <h3 style="text-align: left; max-width: 900px; margin: 20px auto 10px;"><b style="font-size: x-large;">How it works</b></h3>
+            <p class="results" style="max-width: 900px; margin: 0 auto 10px;">
+                Large, dense, fast pressure-sensing surfaces usually force a trade-off between area, resolution, and speed. TactileArena
+                avoids it by reading each taxel only when it is likely to matter.
+            </p>
+            <ul style="text-align: left; max-width: 900px; margin: 0 auto; color: var(--text-muted);">
+                <li><b style="color: var(--text);">Sense:</b> each module is a flex circuit with a 64&times;64 electrode grid under a piezoresistive film, covered by a waterproof cloth; four modules tile the 512&nbsp;mm runway.</li>
+                <li><b style="color: var(--text);">Sample:</b> each board reads 200 of its 4,096 taxels per frame via a coarse background scan; any reading above threshold triggers full-resolution reads of its neighbors.</li>
+                <li><b style="color: var(--text);">Fuse:</b> an overhead camera on the same clock supplies body orientation; contacts are then assigned to paws with 93.3% accuracy against 2,469 hand-labeled contacts.</li>
+            </ul>
+
+            <div class="button-row">
+                <a class="btn btn-primary" href="https://tactilearena.github.io/" target="_blank" rel="noopener">Visit project site</a>
+                <a class="btn btn-outline" href="https://github.com/tactilearena/tactilearena.github.io" target="_blank" rel="noopener">Code</a>
+                <a class="btn btn-outline" href="https://tactilearena.github.io/#open" target="_blank" rel="noopener">Build guide &amp; data</a>
+            </div>
+
+            <hr>
+
+            <p class="results" style="max-width: 900px; margin: 0 auto; text-align: left; font-size: 14px;">
+                <b>Citation</b> (manuscript in preparation):<br>
+                Lu, W., Slepyan, A., Perkins, P., Ascani Orsini, A., Quinn, K., &amp; Thakor, N. V. (2026).
+                <i>Scalable high-density tactile arenas for measuring ground-contact forces in freely moving animals.</i>
+                <a href="https://tactilearena.github.io/" target="_blank" rel="noopener">tactilearena.github.io</a>
+            </p>
+        </div>
+    </section>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">&#8593;</button>
+    <script src="script.js"></script>
+</body>
+</html>

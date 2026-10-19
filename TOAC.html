@@ -5,27 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victor Lu Project - TOAC</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 </head>
 <body>
 
     <nav>
-        <div class="nav-links">
-            <a href="homepage.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="awards.html">Awards</a>
+        <div class="nav-container">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="awards.html">Awards</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="theme-icon">&#9790;</span>
+            </button>
         </div>
     </nav>
 
-    <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <section id="p1" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center;">
             <h2 style="font-size: 28px; margin-bottom: 20px;">A Universal Microchip for Cytocompatibility Study:</h2>
-            <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+            <p style="font-size: 16px; line-height: 1.5; color: var(--text-muted); text-align: left;">
                 With a 3D printed mold, we used polymers made from mixing silicone elastomer (Sylgard 184) and its curing agent at a 10:1 ratio to copy the detailed structure 
                 of the mold. A dentin is placed in the middle of the channel, cell suspension is introduced from the top of the chip, and microscopy images are taken to 
                 study the cell behaviors over the course of time.
             </p>
 
-            <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+            <p style="font-size: 16px; line-height: 1.5; color: var(--text-muted); text-align: left;">
                 When microscopy image is taken after staining, it is observed that cells percipitate and proliferate on top of the dentin disk. Boundaries between individual nucleus 
                 aren't apparent enough for quantification of cells. However, it is still helpful to determine the area ratio between red and green regions to understand the cell viability. 
                 Hence, a project-specific <a href="https://victorlu2220.github.io/cell-viability-calculator/"> algorithm</a> is developed and published on a github to calculate this rgb-based area ratio. 
@@ -63,5 +75,7 @@
 
     </section>
 
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">&#8593;</button>
+    <script src="script.js"></script>
 </body>
 </html>

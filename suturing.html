@@ -5,22 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victor Lu Project - Medical Suturing</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 </head>
 <body>
 
     <nav>
-        <div class="nav-links">
-            <a href="homepage.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="awards.html">Awards</a>
+        <div class="nav-container">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="awards.html">Awards</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="theme-icon">&#9790;</span>
+            </button>
         </div>
     </nav>
 
-    <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <section id="p1" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center;">
             <h2 style="font-size: 28px; margin-bottom: 20px;">Real-time Tracking for Medical Suturing</h2>
 
-            <p id="abstract" style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+            <p id="abstract" style="font-size: 16px; line-height: 1.5; color: var(--text-muted); text-align: left;">
                 <b style="font-size: x-large;">Abstract:</b> Accurate needle and thread tracking is essential for safe and efficient surgical suturing, particularly in minimally invasive procedures. 
                 This project presents a real-time tracking system that combines computer vision and sensor fusion to monitor suturing dynamics and provide live feedback. 
                 To enable precise segmentation of the surgical tools, three deep learning architectures—UNet, nnUNet, and Attention-UNet—were implemented and compared using a labeled dataset. 
@@ -81,7 +93,7 @@
                 </p>
 
                 <!-- UNet Section -->
-                <div style="margin-top: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+                <div style="margin-top: 30px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; background-color: var(--surface-alt);">
                     <h4>UNet</h4>
                     <div style="display: flex; justify-content: center; gap: 10px; padding-top: 10px;">
                         <img src="suturing_img/UNet Instrument Result.png" style="width: 50%; height: 350px;">
@@ -90,7 +102,7 @@
                 </div>
 
                 <!-- nnUNet Section -->
-                <div style="margin-top: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+                <div style="margin-top: 30px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; background-color: var(--surface-alt);">
                     <h4>nnUNet</h4>
                     <div style="display: flex; justify-content: center; gap: 10px; padding-top: 10px;">
                         <img src="suturing_img/nnUNet Instrument Result.png" style="width: 50%; height: 350px;">
@@ -99,7 +111,7 @@
                 </div>
 
                 <!-- Attention UNet Section -->
-                <div style="margin-top: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+                <div style="margin-top: 30px; padding: 20px; border: 1px solid var(--border); border-radius: 10px; background-color: var(--surface-alt);">
                     <h4>Attention-UNet</h4>
                     <div style="display: flex; justify-content: center; gap: 10px; padding-top: 10px;">
                         <img src="suturing_img/attention UNet Instrument Result.png" style="width: 50%; height: 350px;">
@@ -151,5 +163,7 @@
         </div>
     </section>
 
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">&#8593;</button>
+    <script src="script.js"></script>
 </body>
 </html>

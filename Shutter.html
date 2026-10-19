@@ -5,22 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Victor Lu Project - Optical Shutter</title>
   <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-links">
-      <a href="homepage.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="awards.html">Awards</a>
-    </div>
-  </nav>
+    <nav>
+        <div class="nav-container">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="awards.html">Awards</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="theme-icon">&#9790;</span>
+            </button>
+        </div>
+    </nav>
 
-  <section id="p1" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+  <section id="p1" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
     <div style="text-align: center;">
       <h2 style="font-size: 28px; margin-bottom: 20px;">Thermally Actuated Optical Shutter</h2>
 
-      <p id="abstract" style="font-size: 16px; line-height: 1.5; color: #333; text-align: left;">
+      <p id="abstract" style="font-size: 16px; line-height: 1.5; color: var(--text-muted); text-align: left;">
         <b style="font-size: x-large;">Abstract:</b> Standard laser cutting and engraving systems require shutters to prevent continuous laser exposure, which can cause thermal 
         effects on the substrate that limit resolution and precision. This project presents a MEMS laser shutter with a tunable frequency of operation,
         enabling its usage in a variety of micro-laser applications. By supporting precise frequencies, the machine aims to obtain a flexible and 
@@ -116,5 +128,7 @@
     </div>
   </section>
 
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">&#8593;</button>
+    <script src="script.js"></script>
 </body>
 </html>
