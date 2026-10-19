@@ -64,38 +64,34 @@
       <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         <h3><b style="font-size: x-large;">Software Workflow</b></h3>
         <p class="vein">
-            The camera captures videos in grayscale. CLAHE algorithm is applied first to enhance the contrast of the recorded video, followed by Gaussian smoothing to remove noises. 
-            Then derivatives are calculated along the rows and columns to compute the elements of the Hessian matrix H_rr, H_cc, and H_rc. These second-order derivatives (curvatures) 
-            are then combined using a quantized square-root approximation (for computation efficiency) to determine the final Hessian response, effectively highlighting structural features 
-            such as ridges or vessels within the image. A <a href="https://github.com/Richardn2002/fpga-ir-vein-imaging/blob/main/python/golden.py">Python script</a> is written for functionality 
-            examination before the implementation in VHDL. 
+            The pipeline turns a raw grayscale frame into a vein-highlighted image in four steps:
         </p>
+        <ol class="vein">
+            <li><b>Contrast enhancement:</b> CLAHE boosts local contrast, followed by Gaussian smoothing to remove noise.</li>
+            <li><b>Curvature detection:</b> row/column derivatives build the Hessian matrix (H_rr, H_cc, H_rc) at every pixel.</li>
+            <li><b>Vessel response:</b> those curvatures are combined via a quantized square-root approximation (cheap to compute in hardware) into a single score that lights up ridge-like structures such as veins.</li>
+            <li><b>Verification:</b> a <a href="https://github.com/Richardn2002/fpga-ir-vein-imaging/blob/main/python/golden.py">Python "golden model"</a> implements the same math first, so the VHDL output can later be checked against it.</li>
+        </ol>
 
         <img src="https://media.githubusercontent.com/media/Richardn2002/fpga-ir-vein-imaging/refs/heads/main/data/readme/full-flow.png" style="width: 75%;" alt="Software workflow">
-        
+
         <hr>
         <br>
-        
+
         <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
             <h3><b style="font-size: x-large;">VHDL Development Process</b></h3>
             <p class="vein">
-                The VHDL implementation is comprised of multiple modules, all of the read and write steps from and to RAMs are synchronous:
+                The design is split into four synchronous modules, each reading and writing RAM on the clock:
             </p>
             <ul class="vein">
-                <li><b>Camera control and communication with VGA</b>: The Control module initializes the OV7670 sensor via an I2C state machine, configuring internal registers. The VGA module 
-                    captures the resulting video stream, using sync signals to generate X/Y coordinates and valid pixel data for a 128x128 resolution output.</li> 
-                <li><b>CLAHE mapping and output</b>: The CLAHE mapping module generates the local histogram and produces an LUT, which is used by the output module to determine how the original pixel values 
-                    should be mapped to the new, contrast enhanced pixel values. A top controller module is written to decompose the original 128x128 images into 32x32 patches and process them sequentially 
-                    to build the unique lookup tables for each region.</li> 
-                <li><b>Convolution</b>: The convolution modules take convolutions along the rows and columns by taking the summation of the 5 nearest pixels, averaging out noises. </li>
-                <li><b>Gradient and Output</b>: Gradient modules are used to compute the horizontal and vertical gradients of the convoluted image, these effectively detect edges. Following the first order gradient is the second-order
-                    gradient, which is used to detect curvatures, a critical feature of the vessels. The Hessian output module solves for the Hessian matrix's principal eigenvalue to find principal curvatures for each pixel. It combines the pre-computed 
-                    derivatives, uses an LUT to approximate the square root of the discriminant, and outputs a magnitude indicating the likelihood of a pixel being part of a vessel. </li>
+                <li><b>Camera control and VGA:</b> one module initializes the OV7670 camera sensor over I2C; another reads its video stream and times out a clean 128&times;128 pixel grid from the sync signals.</li>
+                <li><b>CLAHE mapping:</b> the 128&times;128 frame is split into 32&times;32 patches; each patch gets its own local histogram and lookup table, which then remaps every pixel to its contrast-enhanced value.</li>
+                <li><b>Convolution:</b> each pixel is averaged with its 5 nearest neighbors along rows and columns to suppress noise before edge detection.</li>
+                <li><b>Gradient &amp; Hessian output:</b> first-order gradients find edges; second-order gradients feed the Hessian matrix. A final module solves for its principal eigenvalue (approximating the square root via a lookup table) to score how vessel-like each pixel is.</li>
             </ul>
-            
+
             <p class="vein">
-                Prior to system-level integration, each module undergoes functional verification via a testbench. This process involves using Python to convert an input image into a text-based pixel array, which serves as the simulation input. The testbench 
-                processes this data and generates an output file. Finally, the VHDL output is validated against the outputs from golden.py to quantify any discrepancies.
+                Each module is verified on its own before integration: a Python script converts a test image into a pixel array, the VHDL testbench processes it, and the result is diffed against <code>golden.py</code>'s output.
             </p>
         </div>
         
@@ -103,10 +99,12 @@
         <br>
         
         <h3><b style="font-size: x-large;">Hardware Setup</b></h3>
-        <p class="vein">
-            The major hardwares used in this project include: a <a href="https://digilent.com/shop/cmod-a7-35t-breadboardable-artix-7-fpga-module/">Cmod A7-35T</a>, a <a href="https://www.amazon.com/dp/B07S66Y3ZQ">camera module</a>, an <a href="https://www.amazon.com/dp/B0CC48J23S?th=1">
-            infrared light emitter </a>and an <a href="https://www.ebay.com/itm/145128062945">IR Filter</a>. The microcontroller is used as a 3.3V power supply. 
-        </p> 
+        <ul class="vein">
+            <li><a href="https://digilent.com/shop/cmod-a7-35t-breadboardable-artix-7-fpga-module/">Cmod A7-35T</a> &mdash; the Artix-7 FPGA board running the full pipeline; its onboard regulator also supplies 3.3V to the rest of the circuit.</li>
+            <li><a href="https://www.amazon.com/dp/B07S66Y3ZQ">OV7670 camera module</a> &mdash; captures the raw grayscale video.</li>
+            <li><a href="https://www.amazon.com/dp/B0CC48J23S?th=1">Infrared emitter</a> &mdash; illuminates the hand for subcutaneous contrast.</li>
+            <li><a href="https://www.ebay.com/itm/145128062945">IR-pass filter</a> &mdash; blocks visible light so only the IR signal reaches the sensor.</li>
+        </ul>
 
         <img src="https://media.githubusercontent.com/media/Richardn2002/fpga-ir-vein-imaging/refs/heads/main/data/readme/setup.jpg" style="width: 75%;" alt="Hardware setup">
         

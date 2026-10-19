@@ -33,10 +33,10 @@
             <h2 style="font-size: 28px; margin-bottom: 20px;">Real-time Tracking for Medical Suturing</h2>
 
             <p id="abstract" style="font-size: 16px; line-height: 1.5; color: var(--text-muted); text-align: left;">
-                <b style="font-size: x-large;">Abstract:</b> Accurate needle and thread tracking is essential for safe and efficient surgical suturing, particularly in minimally invasive procedures. 
-                This project presents a real-time tracking system that combines computer vision and sensor fusion to monitor suturing dynamics and provide live feedback. 
-                To enable precise segmentation of the surgical tools, three deep learning architectures—UNet, nnUNet, and Attention-UNet—were implemented and compared using a labeled dataset. 
-                The system supports responsive and reliable performance, offering potential for integration into robotic surgical tools and AR-based training platforms.
+                <b style="font-size: x-large;">Abstract:</b> Precise needle and thread tracking matters most in minimally invasive surgery, where the margin for error is small.
+                This project tracks both in real time by combining computer vision with sensor fusion, comparing three segmentation architectures&mdash;UNet, nnUNet, and
+                Attention-UNet&mdash;on the same labeled dataset to find the best fit. The goal: a tracker responsive and reliable enough to plug into robotic surgical tools
+                or AR-based training platforms.
             </p>
 
             <hr>
@@ -47,17 +47,14 @@
             <div id="dataset" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
                 <p class="dataset">
                     <b style="font-size: large;">Dataset: </b>
-                    The dataset consists of real-world surgical suturing videos, which were decomposed into individual frames for analysis. In the end, we have around
-                    10,000 frames for medical scalpels but only 410 frames for threads due to difficulty in labeling. 
+                    Real-world suturing videos were split into individual frames: about 10,000 for scalpels, but only 410 for thread, since thin thread is much harder to label by hand.
                 </p>
 
                 <img src="suturing_img/dataset example.jpg" style="width: 50%; height: 350px">
 
                 <p class="dataset">
                     <b style="font-size: large;">Masking: </b>
-                    A user-friendly UI is developed in order to assist in the data labeling, especially for the thin threads. An example
-                    can be seen at the image below. Note that the color represents directionality: green for head and blue for tail. This 
-                    is helpful for inference tasks in the future. 
+                    A custom UI (below) makes labeling the thin threads manageable. Color marks directionality&mdash;green for the leading end, blue for the trailing end&mdash;which later helps the model infer direction of travel.
                 </p>
 
                 <div style="display: flex; justify-content: center; gap: 10px; padding: 20px;">
@@ -67,16 +64,13 @@
 
                 <p class="dataset">
                     <b style="font-size: large;">Video Formation: </b>
-                    We used Python to develop a user interface that overlays labeled masks onto the original frames and reconstructs
-                    the original video with the masks applied.
-                </p>  
+                    A Python tool overlays the labeled masks back onto the original frames, reconstructing a video with the masks applied for visual sanity-checking.
+                </p>
 
-                <p class="dataset"> 
+                <p class="dataset">
                     <b style="font-size: large;">Data Preprocessing: </b>
-                    With the help of the nnUNet preprocessing tool documented on 
-                    <a href="https://github.com/MIC-DKFZ/nnUNet">this website</a>, we were able to 
-                    keep our dataset format consistent and compatible with different model architectures, streamlining training and evaluation.
-                </p>       
+                    The dataset is formatted with the <a href="https://github.com/MIC-DKFZ/nnUNet">nnUNet preprocessing tool</a>, which keeps it in one consistent format that all three model architectures can train and evaluate on.
+                </p>
             </div>
 
             <hr>
@@ -86,10 +80,9 @@
                 <h3><b style="font-size: x-large;">Training and Results</b></h3>
 
                 <p class="results">
-                    We trained three different models: UNet, nnUNet, and Attention-UNet. The results are shown below. Our experiment has shown that nnUNet
-                    outperforms both UNet and attention-UNet using the given dataset. In the future, better evaluations should be conducted with larger datasets, 
-                    especially for thread tracking. Additionally, the discontinuity in thread masks poses challenges for inference, as it prevents the system from 
-                    accurately interpreting the thread's location and state. This issue could be mitigated by incorporating ConvLSTM to generate more coherent and continuous predictions.
+                    <b>nnUNet came out on top</b> of the three models on this dataset (results below). The main open problem is thread tracking: masks for the thin thread are often
+                    discontinuous, which confuses inference about where the thread actually is. A ConvLSTM, which reasons across frames instead of one at a time, could smooth
+                    this out. More thread-labeled data, which was the scarcest part of the dataset, would likely help too.
                 </p>
 
                 <!-- UNet Section -->
@@ -140,10 +133,8 @@
                 <h4> Thread Tracking </h4>
 
                 <p class="results">
-                    The results for thread tracking of both UNet and nnUNet seem to be "digitized". This is because our masks were generated using
-                    the shrinked frames that we intentionally made during the data preparation step(resizing). When we try to superimpose the generated masks
-                    and the original frames, there is a size mismatch. During the scaling process, we "stretched" the dimensions back up and this is visually 
-                    seen as the digitization. 
+                    The UNet and nnUNet thread results look "blocky" because their masks were predicted on downsized frames. Stretching those masks back up to the
+                    original resolution is what produces the visible pixelation.
                 </p>
 
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 10px;">
