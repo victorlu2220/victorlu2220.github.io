@@ -9,7 +9,7 @@
     --text-muted: #5a5a5a;
     --border: #e7e2dd;
     --accent: #b30000;
-    --accent-2: #e63946;
+    --accent-2: #7a0000;
     --accent-soft: rgba(179, 0, 0, 0.1);
     --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
     --shadow-hover: 0 14px 28px rgba(0, 0, 0, 0.12);
@@ -19,18 +19,18 @@
 }
 
 html[data-theme="dark"] {
-    --bg: #15131a;
-    --surface: #1e1b24;
-    --surface-alt: #242029;
-    --text: #efeaf2;
-    --text-muted: #aba3bb;
-    --border: #322c3b;
-    --accent: #ff7a7a;
-    --accent-2: #ff9b6a;
-    --accent-soft: rgba(255, 122, 122, 0.14);
+    --bg: #171514;
+    --surface: #211e1d;
+    --surface-alt: #272322;
+    --text: #efece9;
+    --text-muted: #b2aaa6;
+    --border: #3a3433;
+    --accent: #e85555;
+    --accent-2: #a92020;
+    --accent-soft: rgba(232, 85, 85, 0.14);
     --shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     --shadow-hover: 0 18px 32px rgba(0, 0, 0, 0.5);
-    --nav-bg: rgba(15, 13, 19, 0.85);
+    --nav-bg: rgba(17, 15, 14, 0.88);
 }
 
 * {
@@ -66,10 +66,7 @@ h1 {
     font-size: 38px;
     font-weight: 800;
     letter-spacing: -0.02em;
-    background: linear-gradient(120deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--accent);
     margin-bottom: 10px;
 }
 
@@ -129,7 +126,7 @@ nav {
     bottom: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    background: var(--accent);
     transition: width 0.25s ease;
 }
 
@@ -345,7 +342,7 @@ li,
     position: absolute;
     inset: 0 0 auto 0;
     height: 4px;
-    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -433,10 +430,7 @@ li,
     display: block;
     font-size: 26px;
     font-weight: 800;
-    background: linear-gradient(120deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--accent);
 }
 
 .stat-tile .stat-label {
@@ -473,9 +467,13 @@ li,
 }
 
 .btn-primary {
-    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    background: var(--accent);
     color: #fff;
     box-shadow: 0 8px 18px var(--accent-soft);
+}
+
+.btn-primary:hover {
+    background: var(--accent-2);
 }
 
 .btn-outline {
@@ -514,7 +512,7 @@ li,
     height: 46px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    background: var(--accent);
     color: #fff;
     font-size: 20px;
     cursor: pointer;
