@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Lu - Publications</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="publications.html">Publications</a>
+                <a href="awards.html">Awards</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="theme-icon">&#9790;</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="projects-intro reveal">
+        <h1 style="font-size: 30px;">Publications</h1>
+        <p>Peer-reviewed work and manuscripts in preparation.</p>
+    </div>
+
+    <div class="pub-list">
+
+        <div class="pub-card reveal">
+            <img class="pub-thumb" src="bioadhesive_img/bioadhesive schematics.jpeg" alt="Dopamine-conjugated GelMA schematic" style="object-position: top;">
+            <div class="pub-body">
+                <h2>Dopamine-Conjugated Methacrylated Gelatin Hydrogel&mdash;Physical, Mechanical, and Biological Properties</h2>
+                <p class="pub-meta">
+                    <b>Lu, W.</b>, Rahimnejad, M., Ometto Sahadi, B., &amp; Bottino, M. C. (2025). <i>Gels</i>, 11(7), 499.
+                </p>
+                <p>
+                    GelMA&ndash;dopamine conjugates were developed and characterized as a tissue adhesive alternative to sutures, evaluating swelling,
+                    degradation, mechanical strength, and cytocompatibility. The optimal formulation crosslinked within five minutes and showed
+                    non-cytotoxic, shear-thinning behavior suitable for injection and bioprinting.
+                </p>
+                <a class="read-more" href="https://doi.org/10.3390/gels11070499" target="_blank" rel="noopener">Read the paper &rarr;</a>
+                &nbsp;&middot;&nbsp;
+                <a class="read-more" href="bioadhesive.html">Project page &rarr;</a>
+            </div>
+        </div>
+
+        <div class="pub-card reveal">
+            <img class="pub-thumb" src="tactilearena_img/module.webp" alt="TactileArena sensor module">
+            <div class="pub-body">
+                <h2>Scalable High-Density Tactile Arenas for Measuring Ground-Contact Forces in Freely Moving Animals</h2>
+                <p class="pub-meta">
+                    <b>Lu, W.</b>, Slepyan, A., Perkins, P., Ascani Orsini, A., Quinn, K., &amp; Thakor, N. V. (2026). <i>Manuscript in preparation</i>.
+                </p>
+                <p>
+                    A modular floor of 16,384 pressure-sensing taxels measures ground-contact forces of freely moving animals at ~1&nbsp;kHz
+                    alongside synchronized video, revealing load-sharing deficits after peripheral nerve injury that timing alone misses.
+                </p>
+                <a class="read-more" href="https://tactilearena.github.io/" target="_blank" rel="noopener">Read the preprint site &rarr;</a>
+                &nbsp;&middot;&nbsp;
+                <a class="read-more" href="tactilearena.html">Project page &rarr;</a>
+            </div>
+        </div>
+
+    </div>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">&#8593;</button>
+    <script src="script.js"></script>
+</body>
+</html>
